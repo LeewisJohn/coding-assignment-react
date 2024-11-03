@@ -1,41 +1,45 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Ticket, User } from '@acme/shared-models';
+import { BrowserRouter as BR, Route as R, Routes } from 'react-router-dom';
+import { lazy, Suspense as S } from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
-import styles from './app.module.css';
-import Tickets from './tickets/tickets';
+import { Toaster } from 'react-hot-toast';
+const Board = lazy(() => import('./components/board/Board'));
+const Ticket = lazy(() => import('./components/ticket/TicketHOC'));
+const Not = lazy(() => import('./components/util/404'));
 
-const App = () => {
-  const [tickets, setTickets] = useState([] as Ticket[]);
-  const [users, setUsers] = useState([] as User[]);
-
-  // Very basic way to synchronize state with server.
-  // Feel free to use any state/fetch library you want (e.g. react-query, xstate, redux, etc.).
-  useEffect(() => {
-    async function fetchTickets() {
-      const data = await fetch('/api/tickets').then();
-      setTickets(await data.json());
-    }
-
-    async function fetchUsers() {
-      const data = await fetch('/api/users').then();
-      setUsers(await data.json());
-    }
-
-    fetchTickets();
-    fetchUsers();
-  }, []);
-
+function App() {
   return (
-    <div className={styles['app']}>
-      <h1>Ticketing App</h1>
-      <Routes>
-        <Route path="/" element={<Tickets tickets={tickets} />} />
-        {/* Hint: Try `npx nx g component TicketDetails --project=client --no-export` to generate this component  */}
-        <Route path="/:id" element={<h2>Details Not Implemented</h2>} />
-      </Routes>
-    </div>
+    <main className={`bg-c-111 flex light-theme m-auto justify-center`}>
+      <Provider store={store}>
+        <BR>
+          <Routes>
+            <R
+              path='tickets/:id'
+              element={
+                <S>
+                  <Ticket />
+                </S>
+              }>
+            </R>
+            <R
+              path='/'
+              element={
+                <S>
+                  <Board />
+                </S>
+              }
+            />
+            <R
+              path="*"
+              element={<Not />}
+            />
+          </Routes>
+        </BR>
+      </Provider>
+      <Toaster />
+    </main>
   );
-};
+}
 
 export default App;

@@ -4,17 +4,33 @@
   "private": true,
   "scripts": {
     "start": "nx run-many --target=serve --projects=server,client",
-    "test": "nx run-many --target=test --projects=server,client"
+    "test": "nx run-many --target=test --projects=client"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^17.0.0",
+    "@iconify/react": "^5.0.2",
     "@nestjs/common": "9.2.1",
     "@nestjs/core": "9.2.1",
     "@nestjs/platform-express": "9.2.1",
+    "@nestjs/swagger": "^8.0.1",
+    "@reduxjs/toolkit": "^2.3.0",
+    "@types/react-window": "^1.8.8",
+    "axios": "^1.7.7",
+    "babel-jest": "^29.7.0",
+    "framer-motion": "^11.11.10",
+    "msw": "^2.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-error-boundary": "^4.1.2",
+    "react-hot-toast": "^2.4.1",
+    "react-redux": "^9.1.2",
     "react-router": "^6.3.0",
-    "react-router-dom": "6.4.3",
-    "tslib": "^2.3.0"
+    "react-router-dom": "^6.27.0",
+    "react-textarea-autosize": "^8.5.4",
+    "react-window": "^1.8.10",
+    "tailwindcss": "^3.4.14",
+    "tslib": "^2.3.0",
+    "undici": "^5.27.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",

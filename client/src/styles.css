@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Helvetica', system-ui;
+  }
+}
+
+.clip-bottom {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.light-theme {
+  --c-1: #fff;
+  --c-2: #f4f5f7;
+  --c-text: #172b4d;
+  --primary: #3920a9;
+  --secondary: #439aff;
+  --c-5: #000;
+}
+
+.animate-floting {
+  animation: floting 2.5s infinite;
+}
+
+@keyframes floting {
+
+  0%,
+  to {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(15px)
+  }
+}
+
+@layer components {
+  .btn {
+    @apply whitespace-nowrap rounded-[3px] bg-blue-600 px-3 py-1 text-white hover:bg-blue-700 active:bg-blue-800;
+  }
+
+  .btn-crystal {
+    @apply rounded-[3px] px-3 py-1 hover:bg-c-6 active:bg-c-7;
+  }
+
+  .btn-alert {
+    @apply whitespace-nowrap rounded-[3px] bg-red-500 px-3 py-1 text-white hover:bg-red-600 active:bg-red-700;
+  }
+
+  .btn-icon {
+    @apply rounded-[3px] p-1 hover:bg-c-2;
+  }
+
+  .bg-jira-gradient {
+    @apply bg-gradient-to-r from-[#151642] to-[#321898];
+  }
+
+  .btn-toggle {
+    @apply relative h-[19px] cursor-pointer appearance-none rounded-full bg-slate-300 after:absolute after:top-[1.5px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:bg-white after:duration-150 after:content-[""] checked:bg-blue-500 checked:after:translate-x-[12px];
+  }
+}

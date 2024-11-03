@@ -7,26 +7,56 @@ export class TicketsService {
   /*
    * In-memory storage so data is lost on server restart.
    */
-  private storedTickets: Ticket[] = [
+  storedTickets: Ticket[] = [
     {
       id: 1,
       description: 'Install a monitor arm',
-      assigneeId: 1,
+      assigneeId: null,
       completed: false,
     },
     {
       id: 2,
       description: 'Move the desk to the new location',
-      assigneeId: 1,
+      assigneeId: 2,
       completed: false,
+    },
+    {
+      id: 3,
+      description: 'Change the light bulb',
+      assigneeId: 5,
+      completed: false,
+    },
+    {
+      id: 4,
+      description: 'Buy a new mop',
+      assigneeId: 4,
+      completed: true,
+    },
+    {
+      id: 5,
+      description: 'Go buy a new computer',
+      assigneeId: 3,
+      completed: true,
     },
   ];
 
-  private nextId = 3;
+  private nextId = 6;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) { }
 
   async tickets(): Promise<Ticket[]> {
+    const items = Array.from({ length: 5000 }, (_, index) => {
+      // Lấy đối tượng mẫu dựa trên index, sử dụng toán tử % để lặp lại 5 mẫu
+      const template = this.storedTickets[index % this.storedTickets.length];
+
+      // Tạo đối tượng mới với id và các thuộc tính từ mẫu
+      return {
+        ...template,
+        id: index
+      };
+    });
+    // this.storedTickets = items;
+
     return this.storedTickets;
   }
 
