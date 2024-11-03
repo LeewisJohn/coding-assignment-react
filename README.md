@@ -1,4 +1,4 @@
-# Feature
+# Features
 
 - Display all tickets or a single ticket
 - Filter tickets by status (Complete/Incomplete)
@@ -43,7 +43,7 @@ Server url: http://localhost:3333/api# (Applied Swagger)
 To run tests, run the following command
 
 ```bash
-  yarnyarn test
+  yarn test
 ```
 Written Test Cases:
 
@@ -54,8 +54,6 @@ Written Test Cases:
 
 ## Demo videos
 
-DemoDemo
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0APU0K5ldWk/0.jpg)](https://www.youtube.com/watch?v=0APU0K5ldWk)
 
-Test
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Bi1OMZX_-x8/0.jpg)](https://www.youtube.com/watch?v=Bi1OMZX_-x8)
